@@ -10008,6 +10008,9 @@ body {
 @media (min-width: 992px) {
   body {
     padding-top: 0;
+  }
+
+  body.has-sidebar {
     padding-left: 17rem;
   }
 }
@@ -10115,6 +10118,8 @@ section.resume-section {
   padding-top: 5rem;
   padding-bottom: 5rem;
   max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 section.resume-section .resume-section-content {
   width: 100%;
@@ -10212,6 +10217,9 @@ body {
 @media (min-width: 992px) {
   body {
     padding-top: 60px !important;
+  }
+
+  body.has-sidebar {
     padding-left: 17rem;
   }
 }

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import SideNav from '../components/SideNav'
 import SocialIcons from '../components/SocialIcons'
 
@@ -11,6 +12,13 @@ function Resume() {
     { href: '#education', label: 'Education' }
   ]
 
+  useEffect(() => {
+    document.body.classList.add('has-sidebar')
+    return () => {
+      document.body.classList.remove('has-sidebar')
+    }
+  }, [])
+
   return (
     <>
       <SideNav navItems={navItems} brandText="Faza Muhammad Billah" />
@@ -21,7 +29,7 @@ function Resume() {
           <div className="resume-section-content">
             <h1 className="mb-0">
               Faza Muhammad
-              <span className="text-primary">Billah</span>
+              <span className="text-primary"> Billah</span>
             </h1>
             <div className="subheading mb-5">
               Malaysia · (+60)13-5130171 ·
@@ -103,7 +111,7 @@ function Resume() {
           <div className="resume-section-content">
             <h2 className="mb-5">Project Portfolio</h2>
             <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 order-2 order-md-1">
                 <h3 className="mb-0">Multi-Cloud Portfolio Website</h3>
                 <div className="subheading mb-3"><a href="https://github.com/fazabillah/">GitHub: Coming Soon...</a></div>
                 <ul>
@@ -114,10 +122,10 @@ function Resume() {
                   <li>Automating deployments and managing cloud resources programmatically</li>
                 </ul>
               </div>
-              <div className="flex-shrink-0"><span className="text-primary">2025 (In Progress)</span></div>
+              <div className="flex-shrink-0 order-1 order-md-2"><span className="text-primary">2025 (In Progress)</span></div>
             </div>
             <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 order-2 order-md-1">
                 <h3 className="mb-0">Gen-AI RAG on Material Corrosion Inspection (MCI) Engineering Consultant</h3>
                 <div className="subheading mb-3"><a href="https://github.com/fazabillah/corrosion-AI-tools">GitHub: fazabillah/corrosion-AI-tools</a></div>
                 <ul>
@@ -129,10 +137,10 @@ function Resume() {
                   <li><strong>Stack:</strong> Python, Streamlit, LangChain, Pinecone, Groq API, Plotly, Pandas, HuggingFace</li>
                 </ul>
               </div>
-              <div className="flex-shrink-0"><span className="text-primary">2025</span></div>
+              <div className="flex-shrink-0 order-1 order-md-2"><span className="text-primary">2025</span></div>
             </div>
             <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 order-2 order-md-1">
                 <h3 className="mb-0">Gen-AI RAG Contract Document Review Application</h3>
                 <div className="subheading mb-3"><a href="https://github.com/fazabillah/">GitHub: Coming Soon...</a></div>
                 <ul>
@@ -142,10 +150,10 @@ function Resume() {
                   <li>Created automated data extraction workflows reducing manual review time by 60%</li>
                 </ul>
               </div>
-              <div className="flex-shrink-0"><span className="text-primary">2025</span></div>
+              <div className="flex-shrink-0 order-1 order-md-2"><span className="text-primary">2025</span></div>
             </div>
             <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 order-2 order-md-1">
                 <h3 className="mb-0">Real Estate Data Analytics Project</h3>
                 <div className="subheading mb-3"><a href="https://github.com/fazabillah/Project_DA_RealEstate">GitHub: fazabillah/Project_DA_RealEstate</a></div>
                 <ul>
@@ -153,10 +161,10 @@ function Resume() {
                   <li><strong>Stack:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn, Jupyter Notebook, Statistical Analysis</li>
                 </ul>
               </div>
-              <div className="flex-shrink-0"><span className="text-primary">2025</span></div>
+              <div className="flex-shrink-0 order-1 order-md-2"><span className="text-primary">2025</span></div>
             </div>
             <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 order-2 order-md-1">
                 <h3 className="mb-0">Process Automation & System Optimization Projects</h3>
                 <div className="subheading mb-3">Internal Company Project</div>
                 <ul>
@@ -164,7 +172,7 @@ function Resume() {
                   <li>Created automated finance tracking dashboards reducing late invoice issuance by 20%</li>
                 </ul>
               </div>
-              <div className="flex-shrink-0"><span className="text-primary">2018</span></div>
+              <div className="flex-shrink-0 order-1 order-md-2"><span className="text-primary">2018</span></div>
             </div>
           </div>
         </section>
@@ -175,7 +183,7 @@ function Resume() {
           <div className="resume-section-content">
             <h2 className="mb-5">Work Experience</h2>
             <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 order-2 order-md-1">
                 <h3 className="mb-0">Senior Project Engineer</h3>
                 <div className="subheading mb-3">AHT Syngas Technology N.V. | Renewable Energy Industry | GERMANY</div>
                 <p>Building workflows and standardized processes for complex infrastructure energy projects</p>
@@ -185,10 +193,10 @@ function Resume() {
                   <li>Leading cross-functional technical teams through systematic deployment procedures mirrors the collaborative nature of DevOps culture where reliability engineers work across development, operations, and security teams</li>
                 </ul>
               </div>
-              <div className="flex-shrink-0"><span className="text-primary">Apr 2025 - Present</span></div>
+              <div className="flex-shrink-0 order-1 order-md-2"><span className="text-primary">Apr 2025 - Present</span></div>
             </div>
             <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 order-2 order-md-1">
                 <h3 className="mb-0">Senior Project Engineer</h3>
                 <div className="subheading mb-3">Ankaa Consulting Sdn Bhd | Oil & Gas Industry | MALAYSIA</div>
                 <p>Transformed manual, error-prone tracking processes into automated systems</p>
@@ -198,10 +206,10 @@ function Resume() {
                   <li>Coordinating 10 engineering disciplines shows how to orchestrate complex dependencies between services, similar to managing microservices architectures in cloud environments</li>
                 </ul>
               </div>
-              <div className="flex-shrink-0"><span className="text-primary">Oct 2023 - Mar 2025</span></div>
+              <div className="flex-shrink-0 order-1 order-md-2"><span className="text-primary">Oct 2023 - Mar 2025</span></div>
             </div>
             <div className="d-flex flex-column flex-md-row justify-content-between mb-5">
-              <div className="flex-grow-1">
+              <div className="flex-grow-1 order-2 order-md-1">
                 <h3 className="mb-0">Project Engineer</h3>
                 <div className="subheading mb-3">PETRONAS Carigali Sdn Bhd | Oil & Gas Industry | MALAYSIA</div>
                 <p>Managed high-stakes national oil & gas supply where downtime meant millions in losses in productions and revenues</p>
@@ -213,7 +221,7 @@ function Resume() {
                   <li>Coordinated distributed teams of 200+ personnel, developing the communication and collaboration skills essential for managing cloud resources across regions and teams</li>
                 </ul>
               </div>
-              <div className="flex-shrink-0"><span className="text-primary">Jan 2016 - Aug 2022</span></div>
+              <div className="flex-shrink-0 order-1 order-md-2"><span className="text-primary">Jan 2016 - Aug 2022</span></div>
             </div>
           </div>
         </section>
