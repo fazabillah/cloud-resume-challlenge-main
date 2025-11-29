@@ -1,0 +1,62 @@
+{
+  "devIcons": [
+    { "icon": "fab fa-aws", "label": "AWS" },
+    { "icon": "fab fa-python", "label": "Python" },
+    { "icon": "fab fa-js-square", "label": "JavaScript" },
+    { "icon": "fab fa-react", "label": "React" },
+    { "icon": "fab fa-node-js", "label": "Node.js" },
+    { "icon": "fab fa-docker", "label": "Docker" },
+    { "icon": "fab fa-git-alt", "label": "Git" },
+    { "icon": "fab fa-github", "label": "GitHub" },
+    { "icon": "fab fa-jenkins", "label": "Jenkins" },
+    { "icon": "fab fa-linux", "label": "Linux" }
+  ],
+  "skillCategories": [
+    {
+      "title": "Cloud & DevOps (In Progress)",
+      "skills": [
+        {
+          "label": "Cloud Platforms",
+          "description": "AWS (S3, CloudFront, Lambda, API Gateway, DynamoDB, Route 53, ACM), Azure (Storage, Functions, Cosmos DB, Front Door)"
+        },
+        {
+          "label": "Infrastructure as Code",
+          "description": "Terraform, CloudFormation, Bicep, Ansible"
+        },
+        {
+          "label": "DevOps Tools",
+          "description": "Git, Docker, Kubernetes, Jenkins, CI/CD pipelines"
+        },
+        {
+          "label": "Programming & Scripting",
+          "description": "Python, JavaScript, React, Node.js, Bash scripting"
+        },
+        {
+          "label": "API Development",
+          "description": "RESTful APIs, Serverless architectures, FastAPI, LangServe"
+        },
+        {
+          "label": "Monitoring & Logging",
+          "description": "CloudWatch, Azure Monitor"
+        }
+      ]
+    },
+    {
+      "title": "Data, Machine Learning & Project Management",
+      "skills": [
+        {
+          "label": "Data Analytics",
+          "description": "Python (Pandas, NumPy), Excel (Advanced), Power BI, Google Looker"
+        },
+        {
+          "label": "Machine Learning",
+          "description": "TensorFlow 2.0, NLTK, LangChain, Huggingface, RAG with VectorDB"
+        },
+        {
+          "label": "Project Management",
+          "description": "Scrum methodologies (PSM II certified), JIRA, MS Project"
+        }
+      ]
+    }
+  ]
+}

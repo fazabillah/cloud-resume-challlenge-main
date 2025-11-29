@@ -1,0 +1,54 @@
+{
+  "positions": [
+    {
+      "id": "aht-syngas-2025",
+      "title": "Senior Project Engineer",
+      "company": "AHT Syngas Technology N.V.",
+      "industry": "Renewable Energy Industry",
+      "location": "GERMANY",
+      "startDate": "2025-04",
+      "endDate": null,
+      "dateDisplay": "Apr 2025 - Present",
+      "description": "Building workflows and standardized processes for complex infrastructure energy projects",
+      "transferrableSkills": [
+        "DevOps pipeline automation and infrastructure orchestration",
+        "Leading cross-functional technical teams through systematic deployment procedures mirrors the collaborative nature of DevOps culture where reliability engineers work across development, operations, and security teams"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "ankaa-2023",
+      "title": "Senior Project Engineer",
+      "company": "Ankaa Consulting Sdn Bhd",
+      "industry": "Oil & Gas Industry",
+      "location": "MALAYSIA",
+      "startDate": "2023-10",
+      "endDate": "2025-03",
+      "dateDisplay": "Oct 2023 - Mar 2025",
+      "description": "Transformed manual, error-prone tracking processes into automated systems",
+      "transferrableSkills": [
+        "The same mindset needed for CI/CD pipeline development",
+        "Coordinating 10 engineering disciplines shows how to orchestrate complex dependencies between services, similar to managing microservices architectures in cloud environments"
+      ],
+      "achievements": []
+    },
+    {
+      "id": "petronas-2016",
+      "title": "Project Engineer",
+      "company": "PETRONAS Carigali Sdn Bhd",
+      "industry": "Oil & Gas Industry",
+      "location": "MALAYSIA",
+      "startDate": "2016-01",
+      "endDate": "2022-08",
+      "dateDisplay": "Jan 2016 - Aug 2022",
+      "description": "Managed high-stakes national oil & gas supply where downtime meant millions in losses in productions and revenues",
+      "transferrableSkills": [
+        "Similar pressure to maintaining 99.99% uptime in production environments",
+        "Built automation tools that increased team efficiency by 20%, proving my instinct to eliminate repetitive manual work through scripting and tooling",
+        "Led systematic commissioning procedures with zero-defect tolerance, mirroring the rigorous testing and validation required in infrastructure-as-code deployments",
+        "Coordinated distributed teams of 200+ personnel, developing the communication and collaboration skills essential for managing cloud resources across regions and teams"
+      ],
+      "achievements": []
+    }
+  ]
+}

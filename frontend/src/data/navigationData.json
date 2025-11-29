@@ -1,0 +1,61 @@
+{
+  "resumeNavigation": [
+    { "href": "#about", "label": "About" },
+    { "href": "#skills", "label": "Technical Skills" },
+    { "href": "#projects", "label": "Project Portfolio" },
+    { "href": "#experience", "label": "Work Experience" },
+    { "href": "#certifications", "label": "Certifications" },
+    { "href": "#education", "label": "Education" }
+  ],
+  "projectsNavigation": {
+    "brandText": "Projects",
+    "categories": [
+      {
+        "type": "category",
+        "label": "Cloud Infrastructure",
+        "icon": "fas fa-cloud"
+      },
+      {
+        "type": "sub-item",
+        "href": "#cloud-resume-aws",
+        "label": "Cloud Resume - AWS"
+      },
+      {
+        "type": "sub-item",
+        "href": "#cloud-resume-azure",
+        "label": "Cloud Resume - Azure"
+      },
+      {
+        "type": "category",
+        "label": "DevOps & Automation",
+        "icon": "fas fa-cogs"
+      },
+      {
+        "type": "coming-soon"
+      },
+      {
+        "type": "category",
+        "label": "Generative AI",
+        "icon": "fas fa-brain"
+      },
+      {
+        "type": "sub-item",
+        "href": "#genai-corrosion",
+        "label": "GenAI RAG Corrosion-AI"
+      },
+      {
+        "type": "sub-item",
+        "href": "#genai-contract",
+        "label": "GenAI RAG Contract Document"
+      },
+      {
+        "type": "category",
+        "label": "Web Development",
+        "icon": "fas fa-code"
+      },
+      {
+        "type": "coming-soon"
+      }
+    ]
+  }
+}

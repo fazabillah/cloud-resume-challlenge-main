@@ -1,0 +1,145 @@
+{
+  "categories": [
+    {
+      "id": "cloud-infrastructure",
+      "label": "Cloud Infrastructure",
+      "icon": "fas fa-cloud",
+      "projects": [
+        {
+          "id": "cloud-resume-multicloud",
+          "title": "Cloud Resume Challenge - Multi Cloud (AWS & Azure)",
+          "subtitle": "Infrastructure as Code | Serverless | CI/CD",
+          "year": "2025",
+          "status": "in-progress",
+          "featured": true,
+          "comingSoon": true,
+          "excerpt": "Built a fully serverless resume website with visitor counter",
+          "summary": "Built a fully serverless resume website with visitor counter, demonstrating end-to-end cloud engineering capabilities",
+          "highlights": [
+            {
+              "label": "Frontend",
+              "description": "Static website (HTML/CSS/JS) hosted on S3, distributed via CloudFront with custom domain and SSL/TLS certificate"
+            },
+            {
+              "label": "Backend",
+              "description": "Python Lambda function with DynamoDB for visitor counter, exposed via API Gateway"
+            },
+            {
+              "label": "IaC",
+              "description": "Complete infrastructure provisioned using Terraform with modular, reusable code"
+            },
+            {
+              "label": "CI/CD",
+              "description": "Automated deployment pipeline using GitHub Actions for both frontend and backend"
+            },
+            {
+              "label": "Testing",
+              "description": "Implemented Python unit tests and integration tests for Lambda function"
+            }
+          ],
+          "technologies": "AWS (S3, CloudFront, Lambda, API Gateway, DynamoDB, Route 53, ACM), Terraform, Python, GitHub Actions",
+          "detailedContent": "Detailed documentation and architecture diagrams for this project are currently in progress.",
+          "architecture": "Frontend hosted on S3 with CloudFront distribution. Backend serverless Lambda with DynamoDB. API Gateway for REST endpoints.",
+          "challenges": "Implementing visitor counter with DynamoDB, setting up CI/CD with GitHub Actions",
+          "learnings": "Serverless architecture benefits, Infrastructure as Code best practices",
+          "githubUrl": null,
+          "liveUrl": null,
+          "images": []
+        }
+      ]
+    },
+    {
+      "id": "devops-automation",
+      "label": "DevOps & Automation",
+      "icon": "fas fa-cogs",
+      "projects": [],
+      "comingSoon": true
+    },
+    {
+      "id": "generative-ai",
+      "label": "Generative AI",
+      "icon": "fas fa-brain",
+      "projects": [
+        {
+          "id": "genai-corrosion",
+          "title": "GenAI RAG Corrosion-AI",
+          "subtitle": "Generative AI | RAG | Machine Learning",
+          "year": "2025",
+          "status": "completed",
+          "comingSoon": true,
+          "excerpt": "AI-powered corrosion analysis platform using Retrieval-Augmented Generation",
+          "summary": "Developed an AI-powered corrosion analysis platform using Retrieval-Augmented Generation (RAG) architecture for intelligent document querying and technical insights.",
+          "highlights": [
+            {
+              "label": "AI Architecture",
+              "description": "RAG implementation with vector database for context-aware responses"
+            },
+            {
+              "label": "ML Pipeline",
+              "description": "LangChain integration for document processing and query handling"
+            },
+            {
+              "label": "Domain Expertise",
+              "description": "Specialized corrosion engineering knowledge base"
+            },
+            {
+              "label": "API Development",
+              "description": "RESTful endpoints for AI-powered analysis"
+            }
+          ],
+          "technologies": "Python, LangChain, Huggingface, Vector DB, RAG, FastAPI",
+          "detailedContent": "Detailed documentation and architecture diagrams for this project are currently in progress.",
+          "architecture": "RAG system with vector embeddings, LLM for generation, API backend",
+          "challenges": "Fine-tuning RAG for domain-specific accuracy, managing embeddings at scale",
+          "learnings": "RAG architecture, vector databases, domain-specific AI applications",
+          "githubUrl": "https://github.com/fazabillah/corrosion-AI-tools",
+          "liveUrl": null,
+          "images": []
+        },
+        {
+          "id": "genai-contract",
+          "title": "GenAI RAG Contract Document",
+          "subtitle": "Generative AI | Document Analysis | NLP",
+          "year": "2025",
+          "status": "completed",
+          "comingSoon": true,
+          "excerpt": "Intelligent contract document analysis system using RAG",
+          "summary": "Built an intelligent contract document analysis system using RAG to extract key information, clauses, and obligations from legal documents.",
+          "highlights": [
+            {
+              "label": "Document Processing",
+              "description": "Automated extraction and indexing of contract terms"
+            },
+            {
+              "label": "RAG Implementation",
+              "description": "Context-aware question answering for contract analysis"
+            },
+            {
+              "label": "NLP Features",
+              "description": "Entity recognition, clause extraction, and semantic search"
+            },
+            {
+              "label": "User Interface",
+              "description": "Interactive query system for contract insights"
+            }
+          ],
+          "technologies": "Python, LangChain, NLTK, Vector DB, RAG, Document AI",
+          "detailedContent": "Detailed documentation and architecture diagrams for this project are currently in progress.",
+          "architecture": "Document ingestion pipeline, RAG system with semantic search, interactive UI",
+          "challenges": "Handling diverse document formats, ensuring extraction accuracy",
+          "learnings": "Document processing, legal document understanding, RAG optimization",
+          "githubUrl": null,
+          "liveUrl": null,
+          "images": []
+        }
+      ]
+    },
+    {
+      "id": "web-development",
+      "label": "Web Development",
+      "icon": "fas fa-code",
+      "projects": [],
+      "comingSoon": true
+    }
+  ]
+}

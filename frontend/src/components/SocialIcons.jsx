@@ -1,11 +1,7 @@
-function SocialIcons({ links = [] }) {
-  // Default links if none provided
-  const defaultLinks = [
-    { platform: 'linkedin', url: 'https://linkedin.com/in/fazabillah', icon: 'fab fa-linkedin-in' },
-    { platform: 'github', url: 'https://github.com/fazabillah', icon: 'fab fa-github' }
-  ]
+import socialLinksData from '../data/socialLinksData.json'
 
-  const socialLinks = links.length > 0 ? links : defaultLinks
+function SocialIcons({ links = [] }) {
+  const socialLinks = links.length > 0 ? links : socialLinksData.links
 
   return (
     <div className="social-icons">

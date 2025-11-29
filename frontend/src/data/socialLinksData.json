@@ -1,0 +1,16 @@
+{
+  "links": [
+    {
+      "platform": "linkedin",
+      "url": "https://linkedin.com/in/fazabillah",
+      "icon": "fab fa-linkedin-in",
+      "label": "LinkedIn"
+    },
+    {
+      "platform": "github",
+      "url": "https://github.com/fazabillah",
+      "icon": "fab fa-github",
+      "label": "GitHub"
+    }
+  ]
+}

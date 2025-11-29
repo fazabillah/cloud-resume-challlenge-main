@@ -1,0 +1,53 @@
+{
+  "inProgress": [
+    {
+      "name": "Cloud Resume Challenge Bootcamp",
+      "issuer": "ExamPro.Co",
+      "icon": "fas fa-graduation-cap",
+      "expectedDate": "Dec 2025"
+    },
+    {
+      "name": "Azure Developer Associate (AZ-204)",
+      "issuer": "Microsoft",
+      "icon": "fas fa-certificate text-warning",
+      "expectedDate": null
+      
+    },
+    {
+      "name": "Terraform Associate (004)",
+      "issuer": "HashiCorp",
+      "icon": "fas fa-certificate text-warning",
+      "expectedDate": null
+    }
+  ],
+  "completed": [
+    {
+      "name": "Professional Scrum Master™ II (PSM II)",
+      "issuer": "Scrum.Org",
+      "icon": "fas fa-certificate text-success",
+      "completedDate": "2024",
+      "credentialId": null,
+      "credentialUrl": null
+    }
+  ],
+  "training": [
+    {
+      "name": "Generative AI & Machine Learning Bootcamp",
+      "provider": "DTSense Academy",
+      "icon": "fas fa-graduation-cap",
+      "completedDate": "2025"
+    },
+    {
+      "name": "Data Analytics Bootcamp",
+      "provider": "DTSense Academy",
+      "icon": "fas fa-graduation-cap",
+      "completedDate": "2025"
+    },
+    {
+      "name": "Business Intelligence with Google Looker",
+      "provider": "DTSense Academy",
+      "icon": "fas fa-graduation-cap",
+      "completedDate": "2025"
+    }
+  ]
+}
