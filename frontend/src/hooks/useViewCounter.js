@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { API_CONFIG } from '../constants/config'
 
 /**
  * Custom hook for view counter with auto-increment
@@ -21,9 +22,7 @@ export function useViewCounter() {
         setLoading(true)
         setError(null)
 
-        const apiUrl = import.meta.env.VITE_COUNTER_API_URL || 'http://localhost:8000'
-
-        const response = await fetch(`${apiUrl}/api/counter/increment`, {
+        const response = await fetch(`${API_CONFIG.counterApiUrl}/api/counter/increment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

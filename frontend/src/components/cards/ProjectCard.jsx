@@ -10,7 +10,7 @@ function ProjectCard({ project }) {
     <div className="project-card">
       <h3 className="mb-2">{project.title}</h3>
       {project.subtitle && (
-        <p className="text-muted mb-2" style={{ fontSize: '0.9rem' }}>
+        <p className="text-muted mb-2 text-sm">
           {project.subtitle}
         </p>
       )}

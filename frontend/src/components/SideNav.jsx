@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
+import { DOM_IDS } from '../constants/domIds'
+import { UI_TEXT } from '../constants/text'
 
 function SideNav({ profileImage = '/assets/images/profile.jpg', brandText, navItems = [], showProfile = true }) {
   useEffect(() => {
     // Handle Bootstrap collapse functionality for mobile
     const handleToggle = () => {
-      const navbarCollapse = document.getElementById('navbarSupportedContent')
+      const navbarCollapse = document.getElementById(DOM_IDS.navbarSupportedContent)
       if (navbarCollapse) {
         navbarCollapse.classList.toggle('show')
       }
@@ -25,7 +27,7 @@ function SideNav({ profileImage = '/assets/images/profile.jpg', brandText, navIt
         if (targetElement) {
           targetElement.scrollIntoView({ behavior: 'smooth' })
           // Close mobile menu after click
-          const navbarCollapse = document.getElementById('navbarSupportedContent')
+          const navbarCollapse = document.getElementById(DOM_IDS.navbarSupportedContent)
           if (navbarCollapse && navbarCollapse.classList.contains('show')) {
             navbarCollapse.classList.remove('show')
           }
@@ -88,15 +90,15 @@ function SideNav({ profileImage = '/assets/images/profile.jpg', brandText, navIt
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-      <a className="navbar-brand js-scroll-trigger" href="#page-top">
-        <span className="d-block d-lg-none">{brandText || 'Faza Muhammad Billah'}</span>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id={DOM_IDS.sideNav}>
+      <a className="navbar-brand js-scroll-trigger" href={`#${DOM_IDS.pageTop}`}>
+        <span className="d-block d-lg-none">{brandText || UI_TEXT.brand.fullName}</span>
         {showProfile && (
           <span className="d-none d-lg-block">
             <img
               className="img-fluid img-profile rounded-circle mx-auto mb-2"
               src={profileImage}
-              alt="Faza Muhammad Billah"
+              alt={UI_TEXT.brand.fullName}
             />
           </span>
         )}
@@ -105,14 +107,14 @@ function SideNav({ profileImage = '/assets/images/profile.jpg', brandText, navIt
         className="navbar-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
+        data-target={`#${DOM_IDS.navbarSupportedContent}`}
+        aria-controls={DOM_IDS.navbarSupportedContent}
         aria-expanded="false"
-        aria-label="Toggle navigation"
+        aria-label={UI_TEXT.aria.toggleNavigation}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <div className="collapse navbar-collapse" id={DOM_IDS.navbarSupportedContent}>
         <ul className="navbar-nav">
           {navItems.map((item, index) => renderNavItem(item, index))}
         </ul>

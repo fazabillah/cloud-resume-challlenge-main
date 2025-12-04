@@ -89,7 +89,7 @@ function Projects() {
                 <Link
                   key={project.id}
                   to={`/projects/${project.id}`}
-                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  className="link-unstyled"
                 >
                   <ProjectCard project={project} />
                 </Link>

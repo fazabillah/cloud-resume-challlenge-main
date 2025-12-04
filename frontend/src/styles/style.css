@@ -407,3 +407,26 @@ body.no-sidebar .resume-section {
     padding-left: 1rem;
   }
 }
+
+/* Utility Classes */
+.text-sm {
+  font-size: 0.9rem;
+}
+
+.text-lg {
+  font-size: 1.2rem;
+}
+
+.link-unstyled {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-unstyled:hover {
+  color: inherit;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}

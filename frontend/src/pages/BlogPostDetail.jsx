@@ -85,8 +85,7 @@ function BlogPostDetail() {
             <img
               src={post.coverImage}
               alt={post.title}
-              className="img-fluid mb-4"
-              style={{ maxWidth: '100%', height: 'auto' }}
+              className="img-fluid mb-4 img-responsive"
             />
           )}
 

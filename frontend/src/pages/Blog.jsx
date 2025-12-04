@@ -87,7 +87,7 @@ function Blog() {
                     <Link
                       key={post.slug}
                       to={`/blog/${post.slug}`}
-                      style={{ textDecoration: 'none', color: 'inherit' }}
+                      className="link-unstyled"
                     >
                       <BlogCard post={post} />
                     </Link>

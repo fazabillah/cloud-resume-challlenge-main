@@ -16,8 +16,8 @@ function ViewCounter() {
   return (
     <div className="view-counter mt-4">
       <div className="d-flex align-items-center">
-        <i className="fas fa-eye text-primary mr-2" style={{ fontSize: '1.2rem' }}></i>
-        <span className="text-muted" style={{ fontSize: '0.9rem' }}>
+        <i className="fas fa-eye text-primary mr-2 text-lg"></i>
+        <span className="text-muted text-sm">
           Visitor Count: <strong className="text-primary">{count.toLocaleString()}</strong>
         </span>
       </div>
