@@ -59,10 +59,9 @@ http-server
 
 ## API ViewCounter
 
-A Python FastAPI backend that tracks resume page views with persistent storage.
+A Python FastAPI backend that tracks resume page views.
 
-### Features
-- RESTful API with three endpoints (get, increment, reset)
-- JSON-based persistence for local development
-- CORS-enabled for React frontend integration
-- Designed for serverless migration (AWS Lambda + DynamoDB)
+## Frontend Framework Consideration
+1. Modern build Tooling: Vite with Rust based bundler.
+2. Serverless ready architecture: Client side SPA enabling zero-infrastructure deployment to cloud services.
+3. Maintainable config: Centralized constants and environment variables.

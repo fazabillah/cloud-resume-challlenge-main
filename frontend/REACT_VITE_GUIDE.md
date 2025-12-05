@@ -153,7 +153,7 @@ frontend/
 │   ├── main.jsx                        ← React entry point
 │   ├── App.jsx                         ← Router setup
 │   ├── styles/
-│   │   └── style.css                   ← Global styles (10,389 lines)
+│   │   └── style.css                   ← Global styles (433 lines - optimized)
 │   │
 │   ├── layouts/
 │   │   └── MainLayout.jsx              ← Wrapper for all pages
@@ -178,9 +178,13 @@ frontend/
 │   │   └── common/                     ← Utility components
 │   │       ├── SearchFilterBar.jsx
 │   │       ├── EmptyState.jsx
-│   │       ├── BackButton.jsx
-│   │       ├── SectionHeader.jsx
-│   │       └── ComingSoonBanner.jsx
+│   │       ├── NotFoundSection.jsx
+│   │       └── BackButton.jsx
+│   │
+│   ├── constants/                      ← Centralized constants (NEW)
+│   │   ├── domIds.js                   ← DOM element IDs
+│   │   ├── config.js                   ← API configuration
+│   │   └── text.js                     ← UI text strings
 │   │
 │   ├── pages/                          ← Full page components (routed)
 │   │   ├── Resume.jsx                  ← Homepage (/)
@@ -200,8 +204,11 @@ frontend/
 │   │   ├── socialLinksData.json
 │   │   └── navigationData.json
 │   │
-│   └── hooks/
-│       └── useDataSource.js            ← Custom React hook
+│   └── hooks/                          ← Custom React hooks
+│       ├── useBodyClass.js             ← Body class management
+│       ├── useSearchAndFilter.js       ← Search/filter logic
+│       ├── useViewCounter.js           ← View counter hook
+│       └── useDataSource.js            ← Data source hook
 │
 ├── package.json                        ← Dependencies & scripts
 ├── vite.config.js                      ← Vite configuration
@@ -270,6 +277,7 @@ export default MyComponent
 #### 5. **Common Components** (utility components)
 - `SearchFilterBar.jsx` - Search and filter UI
 - `EmptyState.jsx` - "No results" message
+- `NotFoundSection.jsx` - Standardized "not found" pages
 - `BackButton.jsx` - Back navigation
 - `SocialIcons.jsx` - Social media links
 
@@ -311,6 +319,7 @@ Resume.jsx (the page)
 
 ```
 Projects.jsx (the page)
+  ├── useSearchAndFilter hook (manages search/filter state)
   ├── SearchFilterBar.jsx (for search and category filtering)
   │
   ├── ProjectCard.jsx (loops through filtered projects)
@@ -318,6 +327,140 @@ Projects.jsx (the page)
   │
   └── EmptyState.jsx (shown when no results)
 ```
+
+**Note:** Projects.jsx uses the `useSearchAndFilter` custom hook to manage all search and filter logic, eliminating ~50 lines of duplicate code.
+
+### Modern Code Patterns in This Project
+
+#### Pattern 1: Centralized Constants (Constants Pattern)
+
+All hardcoded values are now centralized in `constants/` folder:
+
+**constants/domIds.js** - DOM element IDs
+```javascript
+export const DOM_IDS = {
+  topNav: 'topNav',
+  sideNav: 'sideNav',
+  // ... all DOM IDs
+}
+
+// Usage in components:
+import { DOM_IDS } from '../constants/domIds'
+document.getElementById(DOM_IDS.topNav)
+```
+
+**constants/config.js** - API configuration
+```javascript
+export const API_CONFIG = {
+  counterApiUrl: import.meta.env.VITE_COUNTER_API_URL || 'http://localhost:8000'
+}
+
+// Usage:
+import { API_CONFIG } from '../constants/config'
+fetch(API_CONFIG.counterApiUrl)
+```
+
+**constants/text.js** - UI text strings
+```javascript
+export const UI_TEXT = {
+  brand: { firstName: 'Faza', lastName: 'Billah' },
+  nav: { resume: 'Resume', projects: 'Projects' }
+}
+
+// Usage:
+import { UI_TEXT } from '../constants/text'
+<h1>{UI_TEXT.brand.fullName}</h1>
+```
+
+**Why This Matters:**
+- Single source of truth for all constants
+- Easy to update text, IDs, or URLs in one place
+- Better maintainability
+
+#### Pattern 2: Custom Hooks (Logic Reuse)
+
+Extract repeated logic into custom hooks:
+
+**useBodyClass.js** - Manage body CSS classes
+```javascript
+// Hook definition:
+export function useBodyClass(className, add = true) {
+  useEffect(() => {
+    const classes = Array.isArray(className) ? className : [className]
+    if (add) {
+      classes.forEach(cls => document.body.classList.add(cls))
+      return () => classes.forEach(cls => document.body.classList.remove(cls))
+    } else {
+      classes.forEach(cls => document.body.classList.remove(cls))
+      return () => {}
+    }
+  }, [className, add])
+}
+
+// Usage in Resume.jsx:
+useBodyClass('has-sidebar')  // Adds class on mount, removes on unmount
+
+// Usage in ProjectDetail.jsx:
+useBodyClass('has-sidebar', false)  // Removes class
+```
+
+**useSearchAndFilter.js** - Search and filter logic
+```javascript
+// Hook definition:
+export function useSearchAndFilter(data, config) {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedFilters, setSelectedFilters] = useState([])
+
+  // Returns: searchTerm, setSearchTerm, selectedFilters, availableFilters,
+  // filteredData, handleFilterToggle, handleClearFilters
+}
+
+// Usage in Projects.jsx:
+const {
+  searchTerm,
+  setSearchTerm,
+  selectedFilters: selectedCategories,
+  filteredData: filteredProjects,
+  handleFilterToggle,
+  handleClearFilters
+} = useSearchAndFilter(allProjects, {
+  searchFields: ['title', 'subtitle', 'technologies'],
+  extractFilters: () => projectsData.categories.map(...),
+  matchFilter: (project, selectedCategories) =>
+    selectedCategories.includes(project.categoryId)
+})
+```
+
+**Why Custom Hooks Matter:**
+- Eliminate duplicate code
+- Make components simpler and more focused
+- Easy to test and reuse logic
+
+#### Pattern 3: Utility CSS Classes (No Inline Styles)
+
+All inline styles moved to CSS utility classes:
+
+**In style.css:**
+```css
+.text-sm { font-size: 0.9rem; }
+.text-lg { font-size: 1.2rem; }
+.link-unstyled { text-decoration: none; color: inherit; }
+.img-responsive { max-width: 100%; height: auto; }
+```
+
+**Usage:**
+```javascript
+// Before (inline style):
+<span style={{ fontSize: '0.9rem' }}>Text</span>
+
+// After (utility class):
+<span className="text-sm">Text</span>
+```
+
+**Why This Matters:**
+- Consistent styling across components
+- Better performance (CSS is cached)
+- Easier to maintain
 
 ---
 
@@ -514,6 +657,48 @@ const filteredProjects = useMemo(() => {
   return projects.filter(p => p.matches(searchTerm))
 }, [searchTerm])  // Re-calculate only when searchTerm changes
 ```
+
+#### Custom Hooks in This Project
+
+**`useBodyClass()` - Body Class Management**
+```javascript
+import useBodyClass from '../hooks/useBodyClass'
+
+// Add class to body:
+useBodyClass('has-sidebar')
+
+// Remove class from body:
+useBodyClass('has-sidebar', false)
+```
+Used in: Resume.jsx, ProjectDetail.jsx, BlogPostDetail.jsx
+
+**`useSearchAndFilter()` - Search and Filter Logic**
+```javascript
+import useSearchAndFilter from '../hooks/useSearchAndFilter'
+
+const {
+  searchTerm,           // Current search term
+  setSearchTerm,        // Update search term
+  selectedFilters,      // Active filters
+  availableFilters,     // All available filters
+  filteredData,         // Filtered results
+  handleFilterToggle,   // Toggle a filter
+  handleClearFilters    // Clear all filters
+} = useSearchAndFilter(data, {
+  searchFields: ['field1', 'field2'],    // Fields to search
+  extractFilters: (data) => [...],       // How to extract filters
+  matchFilter: (item, filters) => true   // How to match filters
+})
+```
+Used in: Projects.jsx, Blog.jsx
+
+**`useViewCounter()` - View Counter**
+```javascript
+import { useViewCounter } from '../hooks/useViewCounter'
+
+const { count, loading, error } = useViewCounter()
+```
+Used in: ViewCounter.jsx
 
 ### 5. Conditional Rendering
 
@@ -844,6 +1029,22 @@ useEffect(() => {
 
 ---
 
-**Last Updated:** November 29, 2025
+## Code Quality Notes
+
+### Recent Optimizations (Dec 2025)
+
+This codebase has been optimized for:
+
+1. **Lean CSS** - Removed 8,000+ lines of embedded Bootstrap (96% reduction)
+2. **Centralized Constants** - All hardcoded values in constants/ folder
+3. **Custom Hooks** - Eliminated ~100 lines of duplicate logic
+4. **Reusable Components** - NotFoundSection standardizes error pages
+5. **No Inline Styles** - All styles in CSS utility classes
+
+**Result:** Cleaner, more maintainable code with better performance.
+
+---
+
+**Last Updated:** December 4, 2025
 
 **Author's Note:** This guide is designed for beginners learning React and Vite. Your Cloud Resume Challenge project is a great example of modern web development. Good luck with your learning journey!
