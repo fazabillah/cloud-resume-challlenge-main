@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
 import blogData from '../data/blogData.json'
 import BackButton from '../components/common/BackButton'
 import NotFoundSection from '../components/common/NotFoundSection'
@@ -10,41 +7,18 @@ import useBodyClass from '../hooks/useBodyClass'
 function BlogPostDetail() {
   const { slug } = useParams()
   const navigate = useNavigate()
-  const [content, setContent] = useState('')
-  const [loading, setLoading] = useState(true)
 
   // Remove 'has-sidebar' class for full-width layout
   useBodyClass('has-sidebar', false)
 
-  // Load markdown file dynamically
-  useEffect(() => {
-    const loadMarkdown = async () => {
-      try {
-        const response = await fetch(`/data/blog-posts/${slug}.md`)
-        if (response.ok) {
-          const text = await response.text()
-          setContent(text)
-        } else {
-          setContent('')
-        }
-      } catch (error) {
-        console.error('Error loading markdown file:', error)
-        setContent('')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    loadMarkdown()
-  }, [slug])
-
-  const post = blogData.posts.find(p => p.slug === slug)
+  // Find post by slug from flat array
+  const post = blogData.find(p => p.slug === slug)
 
   if (!post) {
     return (
       <NotFoundSection
         onBack={() => navigate('/blog')}
-        backLabel="← Back to Blog"
+        backLabel="Back to Blog"
         title="Post Not Found"
         message="The blog post you're looking for doesn't exist."
       />
@@ -55,7 +29,7 @@ function BlogPostDetail() {
     <div className="container-fluid p-0">
       <section className="resume-section">
         <div className="resume-section-content">
-          <BackButton onClick={() => navigate('/blog')} label="← Back to Blog" />
+          <BackButton onClick={() => navigate('/blog')} label="Back to Blog" />
 
           <h1 className="mb-3">{post.title}</h1>
           {post.author && (
@@ -84,14 +58,12 @@ function BlogPostDetail() {
             />
           )}
 
-          {loading ? (
-            <p>Loading post content...</p>
-          ) : (
-            <div className="post-content markdown-content">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {content}
-              </ReactMarkdown>
-            </div>
+          {/* Render pre-built HTML content */}
+          {post.body_html && (
+            <div
+              className="post-content markdown-content"
+              dangerouslySetInnerHTML={{ __html: post.body_html }}
+            />
           )}
         </div>
       </section>

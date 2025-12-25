@@ -11,16 +11,14 @@ function ProjectDetail() {
   // Remove 'has-sidebar' class for full-width layout
   useBodyClass('has-sidebar', false)
 
-  // Find project by id from all categories
-  const project = projectsData.categories
-    .flatMap(cat => cat.projects)
-    .find(p => p.id === id)
+  // Find project by id from flat array
+  const project = projectsData.find(p => p.id === id)
 
   if (!project) {
     return (
       <NotFoundSection
         onBack={() => navigate('/projects')}
-        backLabel="← Back to Projects"
+        backLabel="Back to Projects"
         title="Project Not Found"
         message="The project you're looking for doesn't exist."
       />
@@ -31,50 +29,22 @@ function ProjectDetail() {
     <div className="container-fluid p-0">
       <section className="resume-section">
         <div className="resume-section-content">
-          <BackButton onClick={() => navigate('/projects')} label="← Back to Projects" />
+          <BackButton onClick={() => navigate('/projects')} label="Back to Projects" />
           <h1 className="mb-3">{project.title}</h1>
           <div className="subheading mb-3">{project.subtitle}</div>
-          <p className="lead mb-4">{project.summary}</p>
-
-          {project.highlights && project.highlights.length > 0 && (
-            <>
-              <h3 className="mb-3">Key Features</h3>
-              <ul className="mb-4">
-                {project.highlights.map((highlight, index) => (
-                  <li key={index}>
-                    <strong>{highlight.label}:</strong> {highlight.description}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-
-          {project.architecture && (
-            <>
-              <h3 className="mb-3">Architecture</h3>
-              <p className="mb-4">{project.architecture}</p>
-            </>
-          )}
-
-          {project.challenges && (
-            <>
-              <h3 className="mb-3">Challenges</h3>
-              <p className="mb-4">{project.challenges}</p>
-            </>
-          )}
-
-          {project.learnings && (
-            <>
-              <h3 className="mb-3">Key Learnings</h3>
-              <p className="mb-4">{project.learnings}</p>
-            </>
-          )}
 
           {project.technologies && (
-            <>
-              <h3 className="mb-3">Technologies Used</h3>
-              <p className="mb-4">{project.technologies}</p>
-            </>
+            <div className="mb-4">
+              <strong>Technologies:</strong> {project.technologies}
+            </div>
+          )}
+
+          {/* Render markdown content as HTML */}
+          {project.body_html && (
+            <div
+              className="project-content markdown-content"
+              dangerouslySetInnerHTML={{ __html: project.body_html }}
+            />
           )}
 
           {(project.githubUrl || project.liveUrl) && (

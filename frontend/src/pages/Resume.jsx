@@ -52,11 +52,9 @@ function Resume() {
         <section className="resume-section" id="projects">
           <div className="resume-section-content">
             <h2 className="mb-5">Project Portfolio</h2>
-            {projectsData.categories.map(category =>
-              category.projects.map(project => (
-                <PortfolioProjectCard key={project.id} project={project} />
-              ))
-            )}
+            {projectsData.map(project => (
+              <PortfolioProjectCard key={project.id} project={project} />
+            ))}
           </div>
         </section>
         <hr className="m-0" />

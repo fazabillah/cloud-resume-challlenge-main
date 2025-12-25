@@ -3,6 +3,9 @@ CLAUDE.md
 .claude/
 *.claude
 
+# Teaching curriculum (personal use only)
+docs/
+
 # AWS Ansible vault passwords (if storing locally)
 .vault_password
 .vault_pass

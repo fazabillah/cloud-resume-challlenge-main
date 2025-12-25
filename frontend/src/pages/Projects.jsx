@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import ProjectCard from '../components/cards/ProjectCard'
 import SearchFilterBar from '../components/common/SearchFilterBar'
@@ -7,35 +6,29 @@ import projectsData from '../data/projectsData.json'
 import useSearchAndFilter from '../hooks/useSearchAndFilter'
 
 function Projects() {
-  // Flatten all projects with category info
-  const allProjects = useMemo(() =>
-    projectsData.categories.flatMap(cat =>
-      (cat.projects || []).map(proj => ({
-        ...proj,
-        categoryId: cat.id,
-        categoryLabel: cat.label
-      }))
-    ), []
-  )
-
-  // Use search and filter hook
+  // Use search and filter hook with flat array
   const {
     searchTerm,
     setSearchTerm,
-    selectedFilters: selectedCategories,
-    availableFilters: availableCategories,
+    selectedFilters: selectedStatus,
+    availableFilters: availableStatus,
     filteredData: filteredProjects,
-    handleFilterToggle: handleCategoryToggle,
+    handleFilterToggle: handleStatusToggle,
     handleClearFilters,
-  } = useSearchAndFilter(allProjects, {
+  } = useSearchAndFilter(projectsData, {
     searchFields: ['title', 'subtitle', 'excerpt', 'technologies'],
-    extractFilters: () => projectsData.categories.map(cat => ({
-      id: cat.id,
-      label: cat.label,
-      icon: cat.icon
-    })),
-    matchFilter: (project, selectedCategories) =>
-      selectedCategories.includes(project.categoryId)
+    extractFilters: (projects) => {
+      const statusSet = new Set()
+      projects.forEach(proj => {
+        if (proj.status) statusSet.add(proj.status)
+      })
+      return Array.from(statusSet).sort().map(status => ({
+        id: status,
+        label: status.charAt(0).toUpperCase() + status.slice(1).replace('-', ' ')
+      }))
+    },
+    matchFilter: (project, selectedStatus) =>
+      selectedStatus.includes(project.status)
   })
 
   return (
@@ -50,11 +43,11 @@ function Projects() {
           <SearchFilterBar
             searchTerm={searchTerm}
             onSearchChange={(e) => setSearchTerm(e.target.value)}
-            selectedFilters={selectedCategories}
-            availableFilters={availableCategories}
-            onFilterToggle={handleCategoryToggle}
+            selectedFilters={selectedStatus}
+            availableFilters={availableStatus}
+            onFilterToggle={handleStatusToggle}
             onClearFilters={handleClearFilters}
-            filterType="category"
+            filterType="status"
             placeholder="Search projects by name, tech, or description..."
           />
 

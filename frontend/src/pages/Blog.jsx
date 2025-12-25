@@ -7,9 +7,9 @@ import blogData from '../data/blogData.json'
 import useSearchAndFilter from '../hooks/useSearchAndFilter'
 
 function Blog() {
-  const hasPosts = blogData.posts && blogData.posts.length > 0
+  const hasPosts = blogData && blogData.length > 0
 
-  // Use search and filter hook
+  // Use search and filter hook with flat array
   const {
     searchTerm,
     setSearchTerm,
@@ -18,7 +18,7 @@ function Blog() {
     filteredData: filteredPosts,
     handleFilterToggle: handleTagToggle,
     handleClearFilters,
-  } = useSearchAndFilter(blogData.posts || [], {
+  } = useSearchAndFilter(blogData || [], {
     searchFields: ['title', 'excerpt', 'tags'],
     extractFilters: (posts) => {
       const tagSet = new Set()
@@ -79,18 +79,8 @@ function Blog() {
             <div className="coming-soon-banner text-center">
               <i className="fas fa-pen-fancy fa-5x mb-4 text-primary"></i>
               <h2 className="mb-4">Coming Soon</h2>
-              <p className="lead mb-4">I will be sharing about my learning journey and reflection related to:</p>
-              <ul className="list-unstyled mt-4">
-                {blogData.comingSoonTopics.map(topic => (
-                  <li key={topic.id} className="mb-2">
-                    <i className={`${topic.icon} mr-2`}></i>
-                    {topic.title}
-                  </li>
-                ))}
-              </ul>
-
+              <p className="lead mb-4">Blog posts are coming soon. Follow me for updates:</p>
               <div className="mt-5">
-                <p className="mb-3">Follow me for updates:</p>
                 <SocialIcons />
               </div>
             </div>
